@@ -14,16 +14,15 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-default: &default
+posgredb_default: &default
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: hogehoge
-  password: hogehoge
-  host: localhost
-  timeout: 5000
+  username: root
+  password: password
+  host: posgredb
 
 development:
   <<: *default
@@ -84,6 +83,7 @@ test:
 #
 production:
   <<: *default
-  database: to_do_app_v3_pg_production
-  username: to_do_app_v3_pg
-  password: <%= ENV['TO_DO_APP_V3_PG_DATABASE_PASSWORD'] %>
+  host: <%= Rails.application.credentials.db[:host] %> #credentials.ymlからdbの:hostを取得
+  database: <%= Rails.application.credentials.db[:database] %> #credentials.ymlからdbの:databaseを取得
+  username: <%= Rails.application.credentials.db[:username] %>
+  password: <%= Rails.application.credentials.db[:password] %>

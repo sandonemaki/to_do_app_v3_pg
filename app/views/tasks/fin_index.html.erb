@@ -1,0 +1,45 @@
+<!-- メインコンテンツ -->
+<main class="ly_main">
+  <div class="ly_card_article">
+    <div class="bl_maintitle">
+      <h1 class="el_lv1hedding">
+        がんばった一覧
+      </h1>
+    </div><!-- /bl_maintitle -->
+
+    <!-- タスクカード-->
+    <section class="ly_card_wrapper">
+      <% hash = {} %>
+      <% tasks.tasks_ary.each do |task_ary| %>
+        <% hash = {:id => task_ary[0], :image_status => task_ary[1], :content => task_ary[2], :created_at => task_ary[3]} %>
+        <div class="bl_card">
+          <div class="bl_card_content">
+            <div class=el_card_icon>
+              <img src="<%= "/#{hash[:image_status]}" %>", class="el_card_icon__img">
+            </div><!-- /bl_card_content -->
+            <h2 class="el_card_taskname">
+              <%= hash[:content] %>
+            </h2>
+          </div><!-- /bl_card_content -->
+          <!-- 投稿時間とタスクのリンク先 -->
+          <div class="bl_card_content_sub">
+            <div class="bl_card_date datetime">
+              <%= hash[:created_at].strftime("%Y/%m/%d %H:%M") %>
+            </div><!-- /bl_card_date -->
+            <ul class="bl_card_nav">
+              <li>
+                <%= link_to("未完了", "/tasks/#{hash[:id]}/undone", {class:"el_card_navitem", method: :put}) %>
+              </li>
+              <li>
+                <%= link_to("削除", "/tasks/#{hash[:id]}/destroy", {class:"el_card_navitem", method: :destroy}) %>
+              </li>
+            </ul><!-- /bl_card_nav -->
+          </div><!-- /bl_content_sub -->
+        </div><!-- /bl_card -->
+      <% end %><!-- /タスクカードループ -->
+    </section><!-- /ly_card_wrapper -->
+  </div><!-- /ly_card_article -->
+</main><!-- /ly_main -- >
+<footer>
+</footer>
+
