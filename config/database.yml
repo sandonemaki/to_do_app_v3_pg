@@ -1,4 +1,4 @@
-# PostgreSQL. Versions 9.1 and up are supported.
+# PistgreSQL. Versions 9.1 and up are supported.
 #
 # Install the pg driver:
 #   gem install pg
@@ -14,7 +14,7 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
-posgredb_default: &default
+default: &default
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
@@ -22,7 +22,7 @@ posgredb_default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: password
-  host: posgredb
+  host: localhost
 
 development:
   <<: *default
