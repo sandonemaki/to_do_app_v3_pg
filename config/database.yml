@@ -23,6 +23,7 @@ default: &default
   username: root
   password: password
   host: localhost
+  poat: 5342
 
 development:
   <<: *default
