@@ -23,7 +23,7 @@ default: &default
   username: root
   password: password
   host: localhost
-  poat: 5342
+  poat: 5432
 
 development:
   <<: *default
@@ -32,7 +32,7 @@ development:
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
-  # the same name as the operating system user that initialized the database.
+  # the ame namrails db:createの実行で、別のエラーになった。 as the operating system user that initialized the database.
   #username: to_do_app_v3_pg
 
   # The password associated with the postgres role (username).
