@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+	get "login" => "users#login_form"
+	post "login" => "users#login"
+	post "logout" => "users#logout"
+	post "users/:id/update" =>"users#update"
+	get "users/:id/edit" => "users#edit"
+  post "users/create" => "users#create"
+	get "signup" => "users#new"
+  get "users/index" => "users#index"
+	get "users/:id" => "users#show"
+
+
   get "tasks/new" => "tasks#new"
   post "tasks/create" => "tasks#create"
   get "tasks/:id/edit" => "tasks#edit"
@@ -10,6 +21,7 @@ Rails.application.routes.draw do
     put :undone, on: :member
     get :fin_index, on: :collection
   end
+
 
   root to: "tasks#index"
 end

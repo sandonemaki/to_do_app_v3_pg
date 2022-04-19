@@ -22,7 +22,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: password
-  host: 127.0.0.1
+  host: localhost #127.0.0.1
   poat: 5432
 
 development:
@@ -85,7 +85,7 @@ test:
 production:
   <<: *default
   <% if Rails.application.credentials.database.present? %>
-    # host: <%= Rails.application.credentials.db[:host] %> #credentials.ymlからdbの:hostを取得
+    host: <%= Rails.application.credentials.db[:host] %> #credentials.ymlからdbの:hostを取得
     database: <%= Rails.application.credentials.db[:database] %> #credentials.ymlからdbの:databaseを取得
     username: <%= Rails.application.credentials.db[:username] %>
     password: <%= Rails.application.credentials.db[:password] %>

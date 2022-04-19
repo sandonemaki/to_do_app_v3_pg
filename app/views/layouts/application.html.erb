@@ -21,12 +21,35 @@
       <!-- ヘッダーナビ -->
       <div class="ly_header_nav">
         <ul class="bl_header_nav">
+        <% if session[:user_id] %>
+          <li>
+            現在ログインしているユーザーのid:
+            <%= session[:user_id] %>
+          </li>
           <li class="el_header_navitem">
             <%= link_to("やること一覧", "/") %>
           </li>
           <li class="el_header_navitem">
             <%= link_to("がんばった一覧", "/tasks/fin_index") %>
           </li>
+          <li class="el_header_navitem">
+            <%= link_to("ユーザー一覧", "/users/index") %>
+          </li>
+          <li class="el_header_navitem">
+            <%= link_to("ログアウト", "/logout", {method: "post"}) %>
+          </li>
+        <% else %>
+          <li class="el_header_navitem">
+            <%= link_to("新規登録", "/signup") %>
+          </li>
+          <li class="el_header_navitem">
+            <%= link_to("ログイン", "/login") %>
+          </li>
+        <% end %>
+        </ul>
+
+
+
         </ul><!-- /bl_header_nav-->
       </div><!-- /ly_header_nav -->
     </div><!-- /ly_header_inner -->

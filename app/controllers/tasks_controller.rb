@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
   before_action :task_id_nil?, only: [:edit, :update, :destroy]
 
-  STATUSES = { undone: 0, done: 1 }
+  STATUSES =  { undone: 0, done: 1 }
+  puts STATUSES
   def index
     # Array
     tasks = Task.where(status: STATUSES[:undone]).order(created_at: :desc).pluck(:id, :image_status, :content, :created_at)
